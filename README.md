@@ -18,6 +18,62 @@ Downloadable ZIP archives are in `packages/`:
 - `packages/secure-review-claude-code-skill.zip`
 - `packages/secure-review-codex-skill.zip`
 
+Release downloads are published from GitHub Releases when version tags are pushed.
+
+## Review Flow Graph
+
+```mermaid
+flowchart TD
+  A["secure-review skill"] --> B["Scope and authorization"]
+  B --> C["Application profiling"]
+  C --> D["Technology detection"]
+  D --> E["Attack surface mapping"]
+  E --> F["Auth, role, and permission mapping"]
+  F --> G["Trust boundary and data-flow mapping"]
+  G --> H["Playbook and tool selection"]
+  H --> I["Specialist review passes"]
+  I --> J["Exploitability validation"]
+  J --> K["False-positive validation"]
+  K --> L["Evidence hygiene"]
+  L --> M["Risk scoring"]
+  M --> N["Developer and management reporting"]
+```
+
+## Repository Structure
+
+```text
+secure-code-review-skills/
+|-- README.md
+|-- SECURITY.md
+|-- CONTRIBUTING.md
+|-- docs/
+|   |-- index.html
+|   |-- prompts.html
+|   |-- prompts.md
+|   |-- anatomy.html
+|   |-- anatomy.md
+|   |-- installation.md
+|   |-- usage.md
+|   `-- validation.md
+|-- packages/
+|   |-- secure-review-claude-code-skill.zip
+|   |-- secure-review-codex-skill.zip
+|   |-- claude-code/
+|   |   `-- secure-review-claude-code/
+|   |       `-- .claude/
+|   |           |-- skills/secure-review/
+|   |           |-- agents/
+|   |           `-- hooks/
+|   `-- codex/
+|       `-- secure-review-codex/
+|           |-- AGENTS.md
+|           `-- .agents/skills/secure-review/
+`-- scripts/
+    `-- validate-packages.ps1
+```
+
+Full target anatomy: [docs/anatomy.md](docs/anatomy.md)
+
 ## Quick Start
 
 ### Claude Code

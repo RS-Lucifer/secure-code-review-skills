@@ -6,6 +6,7 @@
   <title>Secure Review Skill Anatomy</title>
   <meta name="description" content="Reference anatomy for the secure-review Claude Code and Codex skill packages.">
   <link rel="stylesheet" href="assets/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 </head>
 <body>
   <header class="topbar">
@@ -23,6 +24,24 @@
       <h1>Skill Anatomy</h1>
       <p class="lede">Reference anatomy for an enterprise secure source-code-review skill with strong evidence gates and low false positives.</p>
       <div class="callout">The current package is intentionally compact. This anatomy documents the target structure and review model for future expansion.</div>
+    </section>
+    <section class="section">
+      <h2>Review Graph</h2>
+      <pre class="mermaid">
+flowchart TD
+  A["secure-review"] --> B["Scope and rules"]
+  B --> C["Application profiling"]
+  C --> D["Technology detection"]
+  D --> E["Attack surface mapping"]
+  E --> F["Role and permission matrix"]
+  F --> G["Trust boundaries"]
+  G --> H["Playbook and tool selection"]
+  H --> I["Specialist agents"]
+  I --> J["Exploitability validation"]
+  J --> K["False-positive validation"]
+  K --> L["Evidence hygiene"]
+  L --> M["Risk scoring and reporting"]
+      </pre>
     </section>
     <section class="section">
       <h2>Core Flow</h2>
@@ -62,6 +81,21 @@
       </div>
       <p>Full reference anatomy is available in <a href="anatomy.md">anatomy.md</a>.</p>
     </section>
+    <section class="section">
+      <h2>Complete Anatomy</h2>
+      <pre><code id="full-anatomy">Loading complete anatomy...</code></pre>
+    </section>
   </main>
+  <script>
+    mermaid.initialize({ startOnLoad: true, securityLevel: "strict" });
+    fetch("anatomy.md")
+      .then(function (response) { return response.text(); })
+      .then(function (text) {
+        document.getElementById("full-anatomy").textContent = text;
+      })
+      .catch(function () {
+        document.getElementById("full-anatomy").textContent = "Open anatomy.md for the complete reference anatomy.";
+      });
+  </script>
 </body>
 </html>

@@ -19,25 +19,241 @@ secure-review-claude-code/
 |   |       |-- SKILL.md
 |   |       |-- README.md
 |   |       |-- workflow/
+|   |       |   |-- 00-scope-and-rules.md
+|   |       |   |-- 01-application-profiling.md
+|   |       |   |-- 02-attack-surface-role-mapping.md
+|   |       |   |-- 03-permission-matrix.md
+|   |       |   |-- 04-technology-detection.md
+|   |       |   |-- 05-vulnerability-playbook-selection.md
+|   |       |   |-- 06-source-to-sink-analysis.md
+|   |       |   |-- 07-scenario-and-bypass-review.md
+|   |       |   |-- 08-deterministic-tooling.md
+|   |       |   |-- 09-agent-execution-plan.md
+|   |       |   |-- 10-seven-question-validation-gate.md
+|   |       |   |-- 11-false-positive-control.md
+|   |       |   |-- 12-evidence-hygiene.md
+|   |       |   |-- 13-risk-scoring.md
+|   |       |   |-- 14-reporting.md
+|   |       |   |-- 15-retest-guidance.md
+|   |       |   |-- 16-diff-aware-review.md
+|   |       |   |-- 17-ci-cd-pr-review.md
+|   |       |   |-- 18-learning-feedback-loop.md
+|   |       |   |-- 19-code-quality-review.md
+|   |       |   |-- 20-architecture-quality-review.md
+|   |       |   |-- 21-performance-dos-review.md
+|   |       |   |-- 22-error-handling-review.md
+|   |       |   |-- 23-test-coverage-review.md
+|   |       |   `-- 24-developer-feedback-style.md
 |   |       |-- role-mapping/
+|   |       |   |-- role-discovery.md
+|   |       |   |-- role-hierarchy.md
+|   |       |   |-- permission-matrix-template.md
+|   |       |   |-- object-ownership-model.md
+|   |       |   |-- tenant-boundary-review.md
+|   |       |   |-- admin-boundary-review.md
+|   |       |   |-- support-role-review.md
+|   |       |   |-- service-account-review.md
+|   |       |   `-- workflow-abuse-review.md
 |   |       |-- validation-gates/
+|   |       |   |-- seven-question-gate.md
+|   |       |   |-- reachability-gate.md
+|   |       |   |-- attacker-control-gate.md
+|   |       |   |-- source-to-sink-gate.md
+|   |       |   |-- authz-gate.md
+|   |       |   |-- impact-gate.md
+|   |       |   |-- exploitability-gate.md
+|   |       |   |-- duplicate-finding-gate.md
+|   |       |   `-- false-positive-gate.md
 |   |       |-- evidence-hygiene/
+|   |       |   |-- evidence-required.md
+|   |       |   |-- pii-redaction.md
+|   |       |   |-- secret-redaction.md
+|   |       |   |-- code-evidence-rules.md
+|   |       |   |-- safe-poc-rules.md
+|   |       |   `-- report-evidence-checklist.md
 |   |       |-- owasp/
+|   |       |   |-- owasp-web-top-10.md
+|   |       |   |-- owasp-api-top-10.md
+|   |       |   |-- owasp-mobile-top-10.md
+|   |       |   |-- owasp-asvs-mapping.md
+|   |       |   |-- owasp-masvs-mapping.md
+|   |       |   `-- cwe-mapping.md
 |   |       |-- vulnerabilities/
+|   |       |   |-- access-control/
+|   |       |   |-- authentication/
+|   |       |   |-- injection/
+|   |       |   |-- xss-client/
+|   |       |   |-- ssrf-network/
+|   |       |   |-- file-security/
+|   |       |   |-- deserialization/
+|   |       |   |-- crypto/
+|   |       |   |-- secrets/
+|   |       |   |-- business-logic/
+|   |       |   |-- api-security/
+|   |       |   |-- cloud/
+|   |       |   |-- ci-cd/
+|   |       |   |-- supply-chain/
+|   |       |   |-- mobile/
+|   |       |   |-- logging-monitoring/
+|   |       |   `-- privacy-data/
 |   |       |-- scenarios/
+|   |       |   |-- scenario-template.md
+|   |       |   |-- bypass-template.md
+|   |       |   |-- auth-bypass-scenarios.md
+|   |       |   |-- access-control-bypass-scenarios.md
+|   |       |   |-- api-abuse-scenarios.md
+|   |       |   |-- mobile-bypass-scenarios.md
+|   |       |   |-- cloud-bypass-scenarios.md
+|   |       |   |-- waf-firewall-bypass-review.md
+|   |       |   |-- business-logic-abuse-scenarios.md
+|   |       |   |-- exploit-chain-thinking.md
+|   |       |   `-- regression-bypass-scenarios.md
 |   |       |-- code-review/
+|   |       |   |-- code-review-principles.md
+|   |       |   |-- four-phase-review-process.md
+|   |       |   |-- automation-awareness.md
+|   |       |   |-- review-feedback-style.md
+|   |       |   |-- review-severity-labels.md
+|   |       |   |-- architecture-review-guide.md
+|   |       |   |-- performance-review-guide.md
+|   |       |   |-- code-quality-anti-patterns.md
+|   |       |   |-- error-handling-principles.md
+|   |       |   |-- async-concurrency-patterns.md
+|   |       |   |-- test-quality-review.md
+|   |       |   |-- api-design-review.md
+|   |       |   |-- database-review.md
+|   |       |   `-- maintainability-review.md
 |   |       |-- semgrep-layer/
+|   |       |   |-- semgrep-strategy.md
+|   |       |   |-- ruleset-selection.md
+|   |       |   |-- taint-mode-guidance.md
+|   |       |   |-- pattern-mode-guidance.md
+|   |       |   |-- custom-rule-factory.md
+|   |       |   |-- rule-test-driven-workflow.md
+|   |       |   |-- semgrep-false-positive-review.md
+|   |       |   |-- semgrep-result-triage.md
+|   |       |   |-- semgrep-ci-integration.md
+|   |       |   |-- semgrep-sarif-output.md
+|   |       |   `-- semgrep-rule-quality-gate.md
 |   |       |-- harness/
+|   |       |   |-- 01-discovery-modeling.md
+|   |       |   |-- 02-threat-aware-plan.md
+|   |       |   |-- 03-specialized-lens-review.md
+|   |       |   |-- 04-adversarial-verification.md
+|   |       |   |-- 05-deduplication.md
+|   |       |   |-- 06-exploit-chain-construction.md
+|   |       |   |-- 07-structured-reporting.md
+|   |       |   |-- 08-remediation-proposal.md
+|   |       |   |-- 09-remediation-validation.md
+|   |       |   |-- 10-human-approval-gates.md
+|   |       |   `-- 11-mtta-metrics.md
 |   |       |-- disclosed-patterns/
+|   |       |   |-- README.md
+|   |       |   |-- pattern-template.md
+|   |       |   |-- access-control-patterns.md
+|   |       |   |-- auth-patterns.md
+|   |       |   |-- injection-patterns.md
+|   |       |   |-- api-patterns.md
+|   |       |   |-- cloud-patterns.md
+|   |       |   |-- mobile-patterns.md
+|   |       |   |-- business-logic-patterns.md
+|   |       |   `-- ci-cd-patterns.md
 |   |       |-- memory/
+|   |       |   |-- memory-policy.md
+|   |       |   |-- past-findings-schema.json
+|   |       |   |-- false-positive-patterns.json
+|   |       |   |-- company-security-controls.json
+|   |       |   |-- framework-sink-map.json
+|   |       |   |-- recurring-bug-patterns.json
+|   |       |   `-- lessons-learned.md
 |   |       |-- reference/
+|   |       |   |-- frontend/
+|   |       |   |-- backend/
+|   |       |   |-- mobile/
+|   |       |   |-- cloud/
+|   |       |   `-- cross-cutting/
 |   |       |-- rules/
+|   |       |   |-- generic-rules.yml
+|   |       |   |-- java-rules.yml
+|   |       |   |-- spring-boot-rules.yml
+|   |       |   |-- nodejs-rules.yml
+|   |       |   |-- express-rules.yml
+|   |       |   |-- nestjs-rules.yml
+|   |       |   |-- python-rules.yml
+|   |       |   |-- django-rules.yml
+|   |       |   |-- flask-fastapi-rules.yml
+|   |       |   |-- dotnet-rules.yml
+|   |       |   |-- php-rules.yml
+|   |       |   |-- laravel-rules.yml
+|   |       |   |-- go-rules.yml
+|   |       |   |-- ruby-rails-rules.yml
+|   |       |   |-- mobile-android-rules.yml
+|   |       |   |-- mobile-ios-rules.yml
+|   |       |   |-- cloud-aws-rules.yml
+|   |       |   |-- cloud-azure-rules.yml
+|   |       |   |-- cloud-gcp-rules.yml
+|   |       |   |-- oracle-rules.yml
+|   |       |   |-- kubernetes-rules.yml
+|   |       |   |-- terraform-rules.yml
+|   |       |   |-- docker-rules.yml
+|   |       |   `-- github-actions-rules.yml
 |   |       |-- scripts/
+|   |       |   |-- repo_profile.py
+|   |       |   |-- route_mapper.py
+|   |       |   |-- role_mapper.py
+|   |       |   |-- permission_matrix_builder.py
+|   |       |   |-- dependency_mapper.py
+|   |       |   |-- sbom_generator.sh
+|   |       |   |-- secret_scan.sh
+|   |       |   |-- semgrep_runner.sh
+|   |       |   |-- iac_scan.sh
+|   |       |   |-- mobile_static_scan.sh
+|   |       |   |-- diff_review.sh
+|   |       |   |-- pr_context_extractor.sh
+|   |       |   |-- finding_deduper.py
+|   |       |   |-- evidence_checker.py
+|   |       |   |-- memory_update.py
+|   |       |   `-- report_builder.py
 |   |       |-- templates/
+|   |       |   |-- app-profile-template.json
+|   |       |   |-- attack-surface-template.md
+|   |       |   |-- role-matrix-template.md
+|   |       |   |-- permission-matrix-template.md
+|   |       |   |-- trust-boundary-template.md
+|   |       |   |-- candidate-finding-template.json
+|   |       |   |-- finding-template.md
+|   |       |   |-- evidence-template.md
+|   |       |   |-- false-positive-review-template.md
+|   |       |   |-- developer-remediation-template.md
+|   |       |   |-- management-summary-template.md
+|   |       |   |-- pr-comment-template.md
+|   |       |   `-- final-report-template.md
 |   |       |-- sarif/
+|   |       |   |-- sarif-schema-notes.md
+|   |       |   |-- sarif-mapping.md
+|   |       |   |-- sarif-output-contract.json
+|   |       |   `-- sarif-to-management-summary.md
 |   |       |-- remediation/
+|   |       |   |-- remediation-policy.md
+|   |       |   |-- safe-fix-proposal.md
+|   |       |   |-- patch-review-template.md
+|   |       |   |-- fix-validation-gates.md
+|   |       |   |-- no-auto-edit-default.md
+|   |       |   `-- developer-fix-guidance.md
 |   |       |-- metrics/
+|   |       |   |-- run-manifest-template.json
+|   |       |   |-- mtta-metric.md
+|   |       |   |-- agent-performance-metrics.md
+|   |       |   |-- false-positive-rate.md
+|   |       |   |-- finding-lifecycle.md
+|   |       |   `-- review-efficiency.md
 |   |       `-- output/
+|   |           |-- finding-schema.json
+|   |           |-- report-schema.json
+|   |           |-- severity-model.md
+|   |           |-- confidence-model.md
+|   |           |-- validation-status.md
+|   |           `-- json-output-contract.md
 |   |-- agents/
 |   |   |-- 01-app-profiler.md
 |   |   |-- 02-architecture-mapper.md
@@ -95,13 +311,86 @@ secure-review-claude-code/
 |   |   |-- 54-sarif-output-agent.md
 |   |   `-- 55-mtta-metrics-agent.md
 |   |-- commands/
+|   |   |-- secure-review.md
+|   |   |-- app-profile.md
+|   |   |-- map-roles.md
+|   |   |-- map-permissions.md
+|   |   |-- threat-model.md
+|   |   |-- scan-secrets.md
+|   |   |-- scan-sca.md
+|   |   |-- semgrep-scan.md
+|   |   |-- semgrep-rule.md
+|   |   |-- semgrep-test-rule.md
+|   |   |-- semgrep-triage.md
+|   |   |-- diff-review.md
+|   |   |-- pr-review.md
+|   |   |-- harness-scan.md
+|   |   |-- harness-validate.md
+|   |   |-- generate-sarif.md
+|   |   |-- propose-fix.md
+|   |   |-- validate-fix.md
+|   |   |-- validate-findings.md
+|   |   |-- update-memory.md
+|   |   |-- retest.md
+|   |   `-- management-report.md
 |   |-- hooks/
+|   |   |-- pre_tool_guard.sh
+|   |   |-- prompt_injection_guard.sh
+|   |   |-- secret_redactor.sh
+|   |   |-- post_scan_collector.sh
+|   |   |-- evidence_required.sh
+|   |   |-- unsafe_command_blocker.sh
+|   |   |-- finding_schema_validator.sh
+|   |   |-- cost_tracker.sh
+|   |   `-- final_report_quality_gate.sh
 |   `-- output-styles/
+|       |-- security-report.md
+|       |-- developer-fix-report.md
+|       |-- management-summary.md
+|       |-- pr-comment-style.md
+|       `-- bug-bounty-style-report.md
 |-- tools/
 |   `-- semgrep/
+|       |-- rules/
+|       |   |-- company/
+|       |   |-- generated/
+|       |   `-- experimental/
+|       |-- tests/
+|       |-- baselines/
+|       |-- sarif/
+|       `-- semgrep-policy.yml
 |-- inventory/
+|   |-- applications.csv
+|   |-- application-criticality.csv
+|   |-- technology-matrix.csv
+|   |-- cloud-mapping.csv
+|   |-- role-models.csv
+|   |-- data-classification.csv
+|   `-- interconnection-map.csv
 |-- results/
+|   `-- sample-app/
+|       |-- app-profile.json
+|       |-- attack-surface.md
+|       |-- roles-matrix.md
+|       |-- permission-matrix.md
+|       |-- trust-boundaries.md
+|       |-- selected-playbooks.md
+|       |-- raw-agent-findings/
+|       |-- validated-findings.json
+|       |-- false-positive-review.md
+|       |-- evidence/
+|       |-- secure-review.sarif
+|       |-- final-security-report.md
+|       |-- developer-remediation.md
+|       |-- pr-comments.md
+|       `-- management-summary.md
 `-- examples/
+    |-- sample-web-app-review.md
+    |-- sample-api-review.md
+    |-- sample-mobile-review.md
+    |-- sample-cloud-review.md
+    |-- sample-pr-review.md
+    `-- sample-final-report.md
 ```
 
 ## Codex Package
@@ -141,6 +430,11 @@ secure-review-codex/
 |           `-- output/
 |-- tools/
 |   `-- semgrep/
+|       |-- rules/
+|       |-- tests/
+|       |-- baselines/
+|       |-- sarif/
+|       `-- semgrep-policy.yml
 |-- inventory/
 |-- results/
 `-- examples/
@@ -293,4 +587,3 @@ PR review:
 - Add Diff PR Review Agent
 - Add Semgrep Triage Agent
 - Add SARIF Output Agent
-

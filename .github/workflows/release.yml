@@ -1,0 +1,36 @@
+name: Release Skill ZIPs
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag, for example v1.0.0"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Validate release assets
+        run: |
+          test -f packages/secure-review-claude-code-skill.zip
+          test -f packages/secure-review-codex-skill.zip
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ github.event.inputs.tag || github.ref_name }}
+        run: |
+          gh release create "$RELEASE_TAG" \
+            packages/secure-review-claude-code-skill.zip \
+            packages/secure-review-codex-skill.zip \
+            --title "Secure Code Review Skills $RELEASE_TAG" \
+            --notes "Release assets for the Claude Code and Codex secure-review skill packages."
