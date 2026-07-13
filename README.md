@@ -1,15 +1,10 @@
-<p align="center">
-  <img src="docs/assets/banner.svg" alt="Secure Code Review Skills" width="100%">
-</p>
+![claude-codex-secure-review banner](docs/assets/banner.svg)
 
-# Secure Code Review Skills
+# claude-codex-secure-review
 
-<p align="center">
-  <a href="https://rs-lucifer.github.io/secure-code-review-skills/">GitHub Pages</a> |
-  <a href="https://rs-lucifer.github.io/secure-code-review-skills/prompts.html">Prompt Library</a> |
-  <a href="https://rs-lucifer.github.io/secure-code-review-skills/anatomy.html">Skill Anatomy</a> |
-  <a href="https://github.com/RS-Lucifer/secure-code-review-skills/releases">Releases</a>
-</p>
+> A Claude Code + Codex skill bundle for defensive secure source-code review: one `secure-review` workflow, 55 Claude specialist agent definitions, Codex project instructions, evidence gates, false-positive reduction, role/permission mapping, prompt library, GitHub Pages docs, and release ZIPs for both harnesses.
+
+Built for **Claude Code** and **OpenAI Codex** users who want AppSec review output that is grounded in reachability, source-to-sink evidence, missing-control proof, and realistic business impact.
 
 <p align="center">
   <a href="https://rs-lucifer.github.io/secure-code-review-skills/"><img src="https://img.shields.io/badge/Docs-GitHub%20Pages-176b5b?style=for-the-badge" alt="Documentation"></a>
@@ -18,25 +13,24 @@
   <a href="https://github.com/RS-Lucifer/secure-code-review-skills/actions/workflows/pages.yml"><img src="https://img.shields.io/badge/Pages-Deployed-blue?style=for-the-badge" alt="GitHub Pages"></a>
 </p>
 
-**Claude Code and Codex skill packages for evidence-backed secure source code review.**
+---
 
-`secure-review` is built for one application at a time. It starts with app profiling, attack-surface mapping, role and permission mapping, trust-boundary review, and source-to-sink validation before it reports vulnerabilities. The default mode is detection-only, with strong false-positive control and reporting built for real AppSec review.
+## What is this?
 
-<table>
-<tr><td><b>Evidence-first security review</b></td><td>Findings require affected file/function, reachable entry point, attacker-controlled source, missing control or dangerous sink, realistic impact, remediation, and safe retest steps.</td></tr>
-<tr><td><b>Claude Code and Codex packages</b></td><td>Ships both <code>.claude/skills/secure-review</code> and <code>.agents/skills/secure-review</code> layouts with matching review logic.</td></tr>
-<tr><td><b>Low false positives</b></td><td>Every candidate passes reachability, attacker control, source-to-sink, existing-control, authorization, impact, and evidence gates before final reporting.</td></tr>
-<tr><td><b>Role and permission mapping</b></td><td>Forces role matrix, permission matrix, object ownership, tenant boundary, and admin/support/service-account boundary review before vulnerability claims.</td></tr>
-<tr><td><b>Specialist review model</b></td><td>Uses targeted lenses for access control, injection, SSRF, file security, deserialization, secrets, crypto, API, GraphQL, mobile, cloud, CI/CD, and supply chain review.</td></tr>
-<tr><td><b>Ready-to-use prompt library</b></td><td>Includes prompts for full application review, maximum discovery, false-positive reduction, access-control review, and final report generation.</td></tr>
-<tr><td><b>Release ZIPs</b></td><td>GitHub Releases publish downloadable Claude Code and Codex ZIP packages, each including the MIT license.</td></tr>
-</table>
+`claude-codex-secure-review` is a drop-in secure-review skill package for **Claude Code** and **Codex**. Install it into a repository, point the agent at one application, and it follows a strict defensive AppSec workflow:
+
+- **Map first** - app profile, framework, routes/APIs, jobs, webhooks, auth flows, roles, permissions, tenants, objects, trust boundaries.
+- **Hunt with evidence** - access control, IDOR/BOLA, tenant isolation, auth, injection, SSRF, file security, deserialization, secrets, cloud/IAM, CI/CD, supply chain, mobile APIs, and business logic.
+- **Validate hard** - reachability, attacker control, source-to-sink path, existing middleware/framework/IAM controls, realistic impact, and false-positive review.
+- **Ship clean reports** - confirmed findings, likely findings, needs manual validation, hardening notes, false positives removed, developer remediation, and management summary.
+
+The default mode is **detection-only**. It reads code, runs safe static checks when allowed, and reports. It does not modify code or perform active testing unless the user explicitly approves a scoped fix or validation task.
 
 ---
 
-## Quick Install
+## Quickstart
 
-### Claude Code
+### Option A - Claude Code package
 
 Project-local install:
 
@@ -54,9 +48,13 @@ mkdir -p ~/.claude/skills
 cp -R packages/claude-code/secure-review-claude-code/.claude/skills/secure-review ~/.claude/skills/secure-review
 ```
 
-For specialist agents, copy `packages/claude-code/secure-review-claude-code/.claude/agents/` into the target repo's `.claude/agents/` directory.
+For the Claude specialist agents, copy:
 
-### Codex
+```bash
+cp -R packages/claude-code/secure-review-claude-code/.claude/agents /path/to/app/.claude/agents
+```
+
+### Option B - Codex package
 
 Project-local install:
 
@@ -73,58 +71,135 @@ Then ask:
 Use the secure-review skill. Review this application in detection-only mode. Start with app profiling and role/permission mapping.
 ```
 
----
+### Release ZIPs
 
-## Getting Started
+Download from the latest release:
 
-```text
-Use the secure-review skill.
+| Asset | Harness |
+|---|---|
+| [`secure-review-claude-code-skill.zip`](https://github.com/RS-Lucifer/secure-code-review-skills/releases/download/v1.0.1/secure-review-claude-code-skill.zip) | Claude Code |
+| [`secure-review-codex-skill.zip`](https://github.com/RS-Lucifer/secure-code-review-skills/releases/download/v1.0.1/secure-review-codex-skill.zip) | Codex |
 
-Review this application end to end in detection-only mode. Do not modify code unless I explicitly approve.
-
-Start with:
-1. application profiling,
-2. technology stack detection,
-3. attack surface mapping,
-4. authentication flow mapping,
-5. role mapping,
-6. permission matrix creation,
-7. trust boundary mapping,
-8. vulnerability playbook selection,
-9. deterministic scan review,
-10. exploitability validation,
-11. false-positive validation,
-12. final reporting.
-
-Only include TRUE POSITIVE and LIKELY TRUE POSITIVE in the final vulnerability section.
-```
-
-Full prompt set: [docs/prompts.md](docs/prompts.md)
+Both ZIPs include the MIT license.
 
 ---
 
-## Review Flow
+## Runs on two harnesses
+
+This repository ships matching secure-review logic for both supported agent harnesses:
+
+| Harness | Entry point | Package path | Notes |
+|---|---|---|---|
+| **Claude Code** | `/secure-review` | `packages/claude-code/secure-review-claude-code/.claude/skills/secure-review` | Includes the skill, 55 specialist agent definitions, hooks, references, and helper scripts. |
+| **Codex** | `Use the secure-review skill` | `packages/codex/secure-review-codex/.agents/skills/secure-review` | Includes `AGENTS.md`, Codex skill metadata, references, and helper scripts. |
+
+---
+
+## Scope - what this bundle is for
+
+This bundle is for **authorized defensive source-code review** of one application at a time.
+
+### In scope
+
+- Application security source review
+- API, web, mobile API, GraphQL, job, queue, webhook, admin, and service-to-service review
+- Role, permission, object ownership, tenant isolation, and admin boundary mapping
+- OWASP/CWE review with evidence-backed findings
+- Semgrep/SCA/SBOM triage when tools are available and approved
+- False-positive reduction and report generation
+- Developer remediation and safe retest guidance
+
+### Out of scope
+
+- Unauthorized testing
+- Production exploitation without explicit approval
+- Credential use against live systems without explicit authorization
+- Malware, persistence, evasion, ransomware, or post-exploitation tooling
+- Scanner-only reports without manual validation
+- WAF-only claims unless backend impact is proven
+
+---
+
+## What's inside
+
+| Area | Included |
+|---|---|
+| Core skill | `secure-review` skill for Claude Code and Codex |
+| Claude agents | 55 specialist agent definition files for focused review lenses |
+| Prompt library | Full review, maximum discovery, false-positive reduction, access-control review, final report generation |
+| References | Workflow, agent catalog, role/permission mapping, OWASP/CWE mapping, Semgrep, harness, report templates |
+| Helper scripts | Finding schema check, redaction helper, safe Semgrep wrapper |
+| Package docs | README, install guide, usage guide, validation guide, GitHub Pages site |
+| Release assets | Claude Code ZIP and Codex ZIP |
+
+Full anatomy: **[docs/anatomy.md](docs/anatomy.md)**  
+Published anatomy page: **[rs-lucifer.github.io/secure-code-review-skills/anatomy.html](https://rs-lucifer.github.io/secure-code-review-skills/anatomy.html)**
+
+---
+
+## How it works
 
 ```mermaid
 flowchart TD
-  A["secure-review skill"] --> B["Scope and authorization"]
+  A["secure-review"] --> B["Scope and authorization"]
   B --> C["Application profiling"]
   C --> D["Technology detection"]
   D --> E["Attack surface mapping"]
-  E --> F["Auth, role, and permission mapping"]
-  F --> G["Trust boundary and data-flow mapping"]
-  G --> H["Playbook and tool selection"]
-  H --> I["Specialist review passes"]
-  I --> J["Exploitability validation"]
-  J --> K["False-positive validation"]
-  K --> L["Evidence hygiene"]
-  L --> M["Risk scoring"]
-  M --> N["Developer and management reporting"]
+  E --> F["Authentication mapping"]
+  F --> G["Role and permission matrix"]
+  G --> H["Trust boundary and data-flow mapping"]
+  H --> I["Playbook and tool selection"]
+  I --> J["Specialist review passes"]
+  J --> K["Exploitability validation"]
+  K --> L["False-positive validation"]
+  L --> M["Evidence hygiene"]
+  M --> N["Final report"]
 ```
+
+The review is intentionally non-reporting until the foundation is mapped. Candidate findings are not final findings. A finding only graduates after it passes reachability, attacker-control, source-to-sink, missing-control, impact, and false-positive gates.
 
 ---
 
-## Repository Structure
+## 7-Question Gate
+
+Every candidate finding must answer:
+
+1. Is the affected code reachable from a real entry point?
+2. Is attacker-controlled or lower-privileged input involved?
+3. Is there a proven source-to-sink path or missing authorization/security control?
+4. Are authentication, authorization, validation, and sanitization controls absent, weak, or bypassable?
+5. Is the impact real in this application's deployment and role model?
+6. Is there evidence: file, function, route/API/job, role, source, sink, impact?
+7. Is the finding not blocked by centralized middleware, framework guards, row-level security, WAF/gateway-only constraints, IAM policy, or other effective controls?
+
+Final status values:
+
+- `TRUE POSITIVE`
+- `LIKELY TRUE POSITIVE`
+- `NEEDS MANUAL VALIDATION`
+- `FALSE POSITIVE`
+- `HARDENING`
+
+---
+
+## Documentation
+
+| Doc | Contents |
+|---|---|
+| [`docs/installation.md`](docs/installation.md) | Claude Code and Codex install paths, project-local setup, optional Semgrep setup |
+| [`docs/usage.md`](docs/usage.md) | Recommended review prompt, review flow, validation gate, output expectations |
+| [`docs/prompts.md`](docs/prompts.md) | Copyable prompts for full review, maximum discovery, false-positive reduction, access-control review, final reporting |
+| [`docs/anatomy.md`](docs/anatomy.md) | Complete Claude Code and Codex target anatomy |
+| [`docs/validation.md`](docs/validation.md) | Package validation checks and local validation commands |
+| [`CONTRIBUTING.md`](CONTRIBUTING.md) | Contribution rules and skill quality expectations |
+| [`SECURITY.md`](SECURITY.md) | Authorized-use posture and issue reporting guidance |
+| [`LICENSE`](LICENSE) | MIT license |
+
+Full docs site: **[rs-lucifer.github.io/secure-code-review-skills](https://rs-lucifer.github.io/secure-code-review-skills/)**
+
+---
+
+## Repository structure
 
 ```text
 secure-code-review-skills/
@@ -160,90 +235,52 @@ secure-code-review-skills/
     `-- validate-packages.ps1
 ```
 
-Full target anatomy: [docs/anatomy.md](docs/anatomy.md)
+---
+
+## Why this exists
+
+Most AI-assisted security reviews fail in one of two ways:
+
+1. They produce scanner-shaped noise without proving reachability, attacker control, or impact.
+2. They find interesting code smells but skip role, permission, tenant, and trust-boundary mapping.
+
+This bundle pushes Claude Code and Codex toward the review behavior expected from a senior AppSec engineer: map the system first, separate candidates from confirmed findings, remove weak claims, and write reports that a developer can actually fix.
 
 ---
 
-## Release Downloads
+## Roadmap
 
-The latest release is [v1.0.1](https://github.com/RS-Lucifer/secure-code-review-skills/releases/tag/v1.0.1).
-
-| Asset | Purpose |
-| --- | --- |
-| [`secure-review-claude-code-skill.zip`](https://github.com/RS-Lucifer/secure-code-review-skills/releases/download/v1.0.1/secure-review-claude-code-skill.zip) | Claude Code package with `.claude/skills/secure-review`, agents, hooks, references, and scripts. |
-| [`secure-review-codex-skill.zip`](https://github.com/RS-Lucifer/secure-code-review-skills/releases/download/v1.0.1/secure-review-codex-skill.zip) | Codex package with `AGENTS.md`, `.agents/skills/secure-review`, references, and scripts. |
-
-Both ZIP assets include the MIT license.
-
----
-
-## Documentation
-
-| Section | What is covered |
-| --- | --- |
-| [Installation](docs/installation.md) | Claude Code and Codex install paths, project-local setup, optional Semgrep setup. |
-| [Usage](docs/usage.md) | Recommended review prompt, review flow, validation gate, and finding output expectations. |
-| [Prompt Library](docs/prompts.md) | Copyable prompts for full app review, maximum discovery, false-positive reduction, access-control review, and final reporting. |
-| [Skill Anatomy](docs/anatomy.md) | Complete target anatomy for the Claude Code and Codex secure-review skill packages. |
-| [Validation](docs/validation.md) | Package validation checks, redaction smoke tests, JSON parsing, and quick validation notes. |
-| [GitHub Pages](https://rs-lucifer.github.io/secure-code-review-skills/) | Published documentation site. |
-
----
-
-## Review Standard
-
-A final security finding must include:
-
-- affected file and function/class/module
-- affected route, API, job, webhook, or mobile path when applicable
-- attacker-controlled source
-- dangerous sink or missing security control
-- impacted role, tenant, or object when applicable
-- realistic impact
-- safe validation or retest steps
-- remediation guidance
-- validation status
-
-Finding statuses:
-
-- `TRUE POSITIVE`
-- `LIKELY TRUE POSITIVE`
-- `NEEDS MANUAL VALIDATION`
-- `FALSE POSITIVE`
-- `HARDENING`
+- [ ] Add richer package-native examples for Claude Code and Codex
+- [ ] Add more Semgrep rule examples and test fixtures
+- [ ] Add report samples for web, API, mobile API, and cloud-heavy applications
+- [ ] Add a generated skill catalog page
+- [ ] Add release notes per package version
 
 ---
 
 ## Validation
 
-Run the package checks locally:
+Run local package validation:
 
 ```powershell
 .\scripts\validate-packages.ps1
 ```
 
-The validation script checks Python helper compilation, JSON playbook parsing, and redaction behavior. Release ZIPs were rebuilt from the checked package roots.
+The validator checks Python helper compilation, vulnerability playbook JSON parsing, and secret-redaction behavior. The release ZIPs are rebuilt from the checked package roots.
 
 ---
 
-## Contributing
+## Authorization
 
-Keep the project focused on authorized defensive source code review:
-
-- preserve detection-only behavior by default
-- require attack-surface, role, permission, and trust-boundary mapping before final findings
-- keep confirmed, likely, manual-validation, false-positive, and hardening items separate
-- do not include real secrets, tokens, cookies, keys, or customer data in examples
-
-See [CONTRIBUTING.md](CONTRIBUTING.md).
+Use these skills only for repositories and systems you own or have written authorization to review. The default mode is detection-only and source-review oriented. Active testing, credential use, exploit validation, and source edits require explicit approval and a scoped environment.
 
 ---
 
-## Security
+## About
 
-Use this project only for authorized defensive review. Do not use production credentials, destructive commands, or active exploitation unless the owner explicitly approves a scoped test environment.
+`claude-codex-secure-review` packages a defensive application-security review workflow for two agent environments: **Claude Code** and **OpenAI Codex**.
 
-See [SECURITY.md](SECURITY.md).
+Repository: [RS-Lucifer/secure-code-review-skills](https://github.com/RS-Lucifer/secure-code-review-skills)
 
 ---
 

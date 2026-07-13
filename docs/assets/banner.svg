@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1400" height="420" viewBox="0 0 1400 420" role="img" aria-labelledby="title desc">
-  <title id="title">Secure Code Review Skills</title>
-  <desc id="desc">Banner for Claude Code and Codex secure code review skill packages.</desc>
+  <title id="title">claude-codex-secure-review</title>
+  <desc id="desc">Banner for Claude Code and Codex secure source code review skill packages.</desc>
   <defs>
     <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
       <stop offset="0%" stop-color="#0f172a"/>
@@ -31,10 +31,10 @@
   </g>
   <g transform="translate(320 84)">
     <text x="0" y="0" fill="#f8fafc" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="56" font-weight="750" letter-spacing="0">
-      Secure Code Review Skills
+      claude-codex-secure-review
     </text>
     <text x="0" y="70" fill="#cbd5e1" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="28" letter-spacing="0">
-      Claude Code and Codex packages for evidence-backed AppSec review
+      Claude Code + Codex packages for evidence-backed AppSec review
     </text>
     <g transform="translate(0 122)" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="20" font-weight="650">
       <rect x="0" y="0" width="170" height="42" rx="8" fill="#176b5b"/>
