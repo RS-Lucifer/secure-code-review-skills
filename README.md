@@ -149,4 +149,4 @@ Use these skills only for authorized defensive review. Do not use production cre
 
 ## License
 
-No license is granted unless the repository owner adds one.
+This project is released under the [MIT License](LICENSE).
