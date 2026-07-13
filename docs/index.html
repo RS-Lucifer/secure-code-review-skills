@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Secure Code Review Skills</title>
+  <meta name="description" content="Claude Code and Codex skill packages for authorized defensive secure code review.">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="Main navigation">
+      <div class="brand">Secure Code Review Skills</div>
+      <div class="links">
+        <a href="#packages">Packages</a>
+        <a href="#install">Install</a>
+        <a href="#workflow">Workflow</a>
+        <a href="installation.md">Docs</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div>
+      <h1>Secure Code Review Skills for Claude Code and Codex</h1>
+      <p class="lede">Reusable defensive review workflows for mapping attack surface, roles, permissions, trust boundaries, OWASP/CWE risks, Semgrep triage, evidence quality, and false-positive reduction.</p>
+      <div class="actions">
+        <a class="button" href="#install">Install</a>
+        <a class="button secondary" href="usage.md">Usage Guide</a>
+      </div>
+    </div>
+    <aside class="panel" aria-label="Review standard">
+      <h2>Default Standard</h2>
+      <p>Detection-only unless explicitly approved for scoped changes or active testing.</p>
+      <ul class="status-list">
+        <li>TRUE POSITIVE</li>
+        <li>LIKELY TRUE POSITIVE</li>
+        <li>NEEDS MANUAL VALIDATION</li>
+        <li>FALSE POSITIVE</li>
+        <li>HARDENING</li>
+      </ul>
+    </aside>
+  </section>
+
+  <main class="main">
+    <section id="packages" class="section">
+      <h2>Packages</h2>
+      <div class="grid">
+        <article class="package">
+          <h3>Claude Code</h3>
+          <p>Includes a <code>/secure-review</code> skill, specialist agent definitions, hooks, playbooks, Semgrep workflow, and report templates.</p>
+          <p><code>packages/claude-code/secure-review-claude-code</code></p>
+        </article>
+        <article class="package">
+          <h3>Codex</h3>
+          <p>Includes <code>AGENTS.md</code>, <code>.agents/skills/secure-review</code>, validation references, safe scripts, and Codex project guidance.</p>
+          <p><code>packages/codex/secure-review-codex</code></p>
+        </article>
+      </div>
+    </section>
+
+    <section id="install" class="section">
+      <h2>Install</h2>
+      <div class="grid">
+        <article class="package">
+          <h3>Claude Code</h3>
+          <pre><code>cp -R packages/claude-code/secure-review-claude-code/.claude /path/to/app/.claude
+cd /path/to/app
+claude
+/secure-review Review this application in detection-only mode.</code></pre>
+        </article>
+        <article class="package">
+          <h3>Codex</h3>
+          <pre><code>cp packages/codex/secure-review-codex/AGENTS.md /path/to/app/AGENTS.md
+cp -R packages/codex/secure-review-codex/.agents /path/to/app/.agents
+cd /path/to/app
+codex</code></pre>
+        </article>
+      </div>
+    </section>
+
+    <section id="workflow" class="section">
+      <h2>Workflow</h2>
+      <ol>
+        <li>Confirm scope and authorization.</li>
+        <li>Profile the application, runtime, framework, database, and deployment model.</li>
+        <li>Map routes, APIs, jobs, webhooks, queues, admin paths, mobile paths, and file handlers.</li>
+        <li>Map authentication, roles, permissions, tenant boundaries, and object ownership.</li>
+        <li>Select playbooks and safe deterministic scans.</li>
+        <li>Collect candidate findings, then apply the validation gate and false-positive review.</li>
+        <li>Report only evidence-backed findings with safe retest steps and remediation.</li>
+      </ol>
+      <div class="callout">
+        A final finding needs reachable code evidence, attacker-controlled input or missing control, affected role or tenant where relevant, realistic impact, and a safe validation path.
+      </div>
+    </section>
+  </main>
+</body>
+</html>

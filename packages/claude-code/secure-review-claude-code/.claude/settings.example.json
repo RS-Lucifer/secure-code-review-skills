@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Grep",
+      "Glob",
+      "Bash(git *)",
+      "Bash(rg *)",
+      "Bash(find *)",
+      "Bash(semgrep *)",
+      "Bash(python3 .claude/skills/secure-review/scripts/*)",
+      "Bash(npm audit *)",
+      "Bash(pip-audit *)",
+      "Bash(syft *)",
+      "Bash(gitleaks *)"
+    ],
+    "deny": [
+      "Bash(rm -rf *)",
+      "Bash(curl * | sh)",
+      "Bash(wget * | sh)",
+      "Bash(:(){ :|:& };:)"
+    ]
+  }
+}

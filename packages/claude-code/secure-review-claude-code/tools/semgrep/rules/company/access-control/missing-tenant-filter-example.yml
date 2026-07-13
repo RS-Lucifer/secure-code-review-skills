@@ -1,0 +1,12 @@
+rules:
+  - id: company.missing-tenant-filter.example
+    message: "Potential missing tenant filter. Triage manually; this example rule is intentionally conservative."
+    severity: WARNING
+    languages: [generic]
+    metadata:
+      category: security
+      cwe: "CWE-639"
+      owasp: "A01: Broken Access Control"
+    patterns:
+      - pattern-regex: "find(ById)?\s*\(.*id.*\)"
+      - pattern-not-regex: "tenant|org|account"

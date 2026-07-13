@@ -1,0 +1,4 @@
+# Optional Codex skill metadata placeholder.
+# Keep minimal; install dependencies manually according to your environment policy.
+name: secure-review
+description: Universal defensive source code security review skill.
