@@ -4,6 +4,8 @@ Claude Code and Codex skill packages for authorized defensive source code securi
 
 These packages are designed for one application at a time and default to detection-only review. They focus on attack-surface mapping, authentication and role mapping, permission matrices, trust boundaries, OWASP/CWE review, Semgrep/SCA/SBOM triage, evidence hygiene, false-positive reduction, and developer-ready reporting.
 
+GitHub Pages: https://rs-lucifer.github.io/secure-code-review-skills/
+
 ## Packages
 
 | Package | Path | Purpose |
