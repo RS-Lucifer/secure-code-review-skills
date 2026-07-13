@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Secure Review Prompts</title>
+  <meta name="description" content="Ready-to-use secure code review prompts for Claude Code and Codex.">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="Main navigation">
+      <div class="brand">Secure Code Review Skills</div>
+      <div class="links">
+        <a href="index.html">Home</a>
+        <a href="anatomy.html">Anatomy</a>
+        <a href="usage.md">Usage</a>
+      </div>
+    </nav>
+  </header>
+  <main class="main">
+    <section class="section">
+      <h1>Ready-to-Use Review Prompts</h1>
+      <p class="lede">Use these prompts after installing the <code>secure-review</code> skill in Claude Code or Codex.</p>
+      <div class="callout">Recommended sequence: run the master review prompt, run false-positive reduction, then generate the final report from validated findings only.</div>
+    </section>
+    <section class="section">
+      <h2>Prompt Set</h2>
+      <div class="grid">
+        <article class="package">
+          <h3>Full Application Review</h3>
+          <p>End-to-end detection-only review with attack surface, role, permission, trust-boundary, exploitability, and false-positive gates.</p>
+        </article>
+        <article class="package">
+          <h3>Maximum Discovery</h3>
+          <p>Broad specialist-agent coverage while keeping final findings restricted to validated vulnerabilities.</p>
+        </article>
+        <article class="package">
+          <h3>False-Positive Reduction</h3>
+          <p>Aggressively removes findings without reachability, attacker control, source-to-sink proof, impact, or effective evidence.</p>
+        </article>
+        <article class="package">
+          <h3>Access Control</h3>
+          <p>Focuses on role mapping, permission mapping, IDOR/BOLA, tenant isolation, and admin boundary bypasses.</p>
+        </article>
+      </div>
+    </section>
+    <section class="section">
+      <h2>Master Prompt</h2>
+      <pre><code>Use the secure-review skill.
+
+Review this application end to end in detection-only mode. Do not modify code unless I explicitly approve.
+
+Your goal is to find real, reachable, exploitable, evidence-backed security vulnerabilities with the lowest possible false-positive rate.
+
+Start with application profiling, technology stack detection, attack surface mapping, authentication flow mapping, role mapping, permission matrix creation, trust boundary mapping, data flow mapping, vulnerability playbook selection, deterministic scan review, specialist agent review, exploitability validation, false-positive validation, and final reporting.
+
+Do not start reporting vulnerabilities until you complete attack surface, role, permission, and trust-boundary mapping.
+
+Only include TRUE POSITIVE and LIKELY TRUE POSITIVE in the final vulnerability section. Move weak, theoretical, scanner-only, or uncertain issues to Needs Manual Validation / Hardening Notes.</code></pre>
+      <p>Full copyable prompt text is available in <a href="prompts.md">prompts.md</a>.</p>
+    </section>
+  </main>
+</body>
+</html>

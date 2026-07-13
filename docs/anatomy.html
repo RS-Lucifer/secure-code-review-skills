@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Secure Review Skill Anatomy</title>
+  <meta name="description" content="Reference anatomy for the secure-review Claude Code and Codex skill packages.">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="Main navigation">
+      <div class="brand">Secure Code Review Skills</div>
+      <div class="links">
+        <a href="index.html">Home</a>
+        <a href="prompts.html">Prompts</a>
+        <a href="usage.md">Usage</a>
+      </div>
+    </nav>
+  </header>
+  <main class="main">
+    <section class="section">
+      <h1>Skill Anatomy</h1>
+      <p class="lede">Reference anatomy for an enterprise secure source-code-review skill with strong evidence gates and low false positives.</p>
+      <div class="callout">The current package is intentionally compact. This anatomy documents the target structure and review model for future expansion.</div>
+    </section>
+    <section class="section">
+      <h2>Core Flow</h2>
+      <ol>
+        <li>Scope and rules</li>
+        <li>Application profiling</li>
+        <li>Technology detection</li>
+        <li>Attack surface mapping</li>
+        <li>Role and permission mapping</li>
+        <li>Trust boundary mapping</li>
+        <li>Vulnerability playbook selection</li>
+        <li>Semgrep / SCA / secrets review</li>
+        <li>Agent-based review</li>
+        <li>Exploitability and false-positive validation</li>
+        <li>Evidence hygiene, risk scoring, and report generation</li>
+      </ol>
+    </section>
+    <section class="section">
+      <h2>Coverage</h2>
+      <div class="grid">
+        <article class="package">
+          <h3>Authorization</h3>
+          <p>Access control, IDOR/BOLA, tenant isolation, role bypass, admin boundary, and service-account permission issues.</p>
+        </article>
+        <article class="package">
+          <h3>Input and Data Flows</h3>
+          <p>Injection, SSRF, file upload, path traversal, deserialization, mass assignment, and excessive data exposure.</p>
+        </article>
+        <article class="package">
+          <h3>Platform</h3>
+          <p>Cloud, IAM, CI/CD, supply chain, SCA/SBOM, mobile API authorization, and secrets exposure.</p>
+        </article>
+        <article class="package">
+          <h3>Validation</h3>
+          <p>Reachability, attacker control, source-to-sink proof, existing controls, realistic impact, and evidence quality.</p>
+        </article>
+      </div>
+      <p>Full reference anatomy is available in <a href="anatomy.md">anatomy.md</a>.</p>
+    </section>
+  </main>
+</body>
+</html>

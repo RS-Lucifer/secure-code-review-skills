@@ -81,6 +81,8 @@ Finding statuses:
 
 - [Installation](docs/installation.md)
 - [Usage](docs/usage.md)
+- [Ready-to-Use Prompts](docs/prompts.md)
+- [Skill Anatomy](docs/anatomy.md)
 - [Validation](docs/validation.md)
 - [GitHub Upload](docs/github-upload.md)
 - GitHub Pages site: `docs/index.html`

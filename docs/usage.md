@@ -2,6 +2,8 @@
 
 ## Recommended Review Prompt
 
+For more copyable prompts, see [Ready-to-Use Review Prompts](prompts.md).
+
 ```text
 Use the secure-review skill. Review this application in detection-only mode.
 
