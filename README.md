@@ -80,6 +80,7 @@ Finding statuses:
 - [Installation](docs/installation.md)
 - [Usage](docs/usage.md)
 - [Validation](docs/validation.md)
+- [GitHub Upload](docs/github-upload.md)
 - GitHub Pages site: `docs/index.html`
 
 ## Safety
